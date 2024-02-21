@@ -31,7 +31,7 @@ function find(event) {
     }
 
     if (searchBox.value.trim() !== '')
-        fetch(`http://localhost:8080/search/${searchBox.value}`)
+        fetch(`https://abundant-wealth-production.up.railway.app//search/${searchBox.value}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
