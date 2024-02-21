@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout('signup',~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- everything  in this  section will be placed inside the section of base.html -->
+    <section>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form action="" th:action="@{/register}" method="post" th:object="${user}">
+                        <div class="card  mt-5">
+                            <div class="card-body">
+
+                                <!-- Note -->
+                                <div th:if="${message != null}" class="alert" th:classappend="${message.type}"
+                                    role="alert">
+                                    <p th:text="${message.content}"></p>
+                                </div>
+
+                                <h2 class="text-center white">Sign Up Form</h2>
+
+                                <!-- div for name input -->
+                                <div class="mb-2">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" th:value="*{name}"
+                                        th:classappend="${#fields.hasErrors('name')?'is-invalid':''}" />
+
+                                    <div class="invalid-feedback">
+                                        <p th:each=" e : ${#fields.errors('name')}" th:text="${e}"></p>
+                                    </div>
+                                </div>
+
+                                <!-- div for email input -->
+                                <div class="mb-2">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" th:value="*{email}"
+                                        th:classappend="${#fields.hasErrors('email')?'is-invalid':''}" />
+
+                                    <div class="invalid-feedback">
+                                        <p th:each=" e : ${#fields.errors('email')}" th:text="${e}"></p>
+                                    </div>
+                                </div>
+
+                                <!-- div for password input -->
+                                <div class="mb-2">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        th:value="*{password}"
+                                        th:classappend="${#fields.hasErrors('password')?'is-invalid':''}" />
+
+                                    <div class="invalid-feedback">
+                                        <p th:each=" e : ${#fields.errors('password')}" th:text="${e}"></p>
+                                    </div>
+                                </div>
+
+                                <!-- div for about input -->
+                                <div class="mb-2 text-center">
+                                    <textarea name="about" rows="5" th:text="*{about}"></textarea>
+                                </div>
+
+                                <div class="text-center mb-2">
+                                    <input type="checkbox" name="agreement" id="agreement" class="form-check-input" />
+                                    I agree with the terms and conditions
+                                </div>
+
+                                <div class="text-center mb-2">
+                                    <button type="reset" class="btn btn-outline-success">Reset</button>
+                                    <button type="submit" class="btn btn-outline-success">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+</body>
+
+</html>

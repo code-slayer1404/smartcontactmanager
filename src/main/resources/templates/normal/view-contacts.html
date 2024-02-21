@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="~{normal/userbase::layout('View Contacts',~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <div style="margin-top: 32px;">
+            <!-- card for search -->
+            <div style="display: flex; justify-content: center;">
+                <div class="card mb-5 w-75">
+                    <div class="card-body">
+                        <div id="searchContainer">
+                            <input class="form-control" type="text" id="searchBox" placeholder="Sarch Contacts">
+                            <div class="list-group" id="searchResult">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- card for view contacts -->
+            <div class="card me-3 ms-3">
+                <div class="card-body">
+
+                    <div th:if="${session.message != null}" class="mb-3 mt-2 p-1">
+                        <span th:text="${session.message.content}" class="alert"
+                            th:classappend="${session.message.type}" role="alert"></span>
+                        <div th:text="${@sessionHelper.removeMessageFromSession()}"></div>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <!-- <th scope="col">#</th> -->
+                                <th scope="col" class="text-start">Name</th>
+                                <th scope="col" class="text-start">Email</th>
+                                <th scope="col" class="text-start">Phone</th>
+                                <th scope="col" class="text-start">Work</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="c : ${contacts}">
+                                <!-- <th scope="row">1</th> -->
+                                <td class="text-start">
+                                    <img th:src="@{'/img/uploaded-images/'+${c.image}}" alt="" class="profile-pic">
+                                    <span th:text="${c.name}"></span>
+                                </td>
+                                <td th:text="${c.email}" class="text-start">Mark</td>
+                                <td th:text="${c.phone}" class="text-start">Mark</td>
+                                <td th:text="${c.work}" class="text-start">Mark</td>
+                                <td>
+                                    <div name="buttons" class="d-flex justify-content-center">
+
+                                        <form th:action="@{'/user/contact/'+${c.cid}}" method="post">
+                                            <button class="btn btn-outline-success p-1" type="submit">Open</button>
+                                        </form>
+
+                                        <form th:action="@{'/user/open-update/'+${c.cid}}" method="post">
+                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                        </form>
+
+                                        <button class="btn btn-outline-danger">
+                                            <a th:href="@{'/user/delete-contact/'+${c.cid}}"
+                                                style="text-decoration: none; color: inherit;">
+                                                Delete
+                                            </a>
+                                        </button>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <nav th:if="${totalPages>0}" aria-label="Page navigation example" class="ms-3">
+                <ul class="pagination">
+                    <li th:if="${currentPage+1>1}" class="page-item">
+                        <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${currentPage-1}}">Previous</a>
+                    </li>
+
+                    <li class="page-item" th:each="i : ${ #numbers.sequence(1,totalPages) }"
+                        th:classappend="${i-1 == currentPage ? ' active' : ''}">
+                        <a class="page-link" th:href="@{'/user/view-contacts/'+${i-1}}" th:text="${i}"></a>
+                    </li>
+
+                    <li th:if="${currentPage+1<totalPages}" class="page-item">
+                        <a class="page-link" href="#" th:href="@{'/user/view-contacts/'+${currentPage+1}}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <script th:src="@{/js/search.js}"></script>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/userbase::layout('Add Contact',~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <form th:action="@{/user/add-contact}" method="post" th:object="${contact}" enctype="multipart/form-data">
+                        <div class="card mt-5">
+                            <div class="card-body ps-5 pe-5 pt-3">
+
+                                <!-- Note -->
+                                <div th:if="${message != null}" class="alert" th:classappend="${message.type}" role="alert">
+                                    <p th:text="${message.content}"></p>
+                                </div>
+
+                                <div class="h2 text-center">Add a new contact</div>
+                                <!-- name field -->
+                                <div class="mt-4 mb-3 text-center d-flex align-items-center">
+                                    <div class="me-2"><i class="fa fa-plus"></i></div>
+                                    <input type="text" name="name" placeholder="Enter Name" class="form-control">
+                                </div>
+                                <!--  -->
+                                <div class="mb-3 text-center d-flex align-items-center">
+                                    <div class="me-2"><i class="fa fa-briefcase"></i></div>
+                                    <input type="text" name="work" placeholder="Enter Work" class="form-control">
+                                </div>
+                                <!--  -->
+                                <div class="mb-3 text-center d-flex align-items-center">
+                                    <div class="me-2"><i class="fa fa-phone"></i></div>
+                                    <input type="number" name="phone" placeholder="Enter Phone" class="form-control">
+                                </div>
+                                <!--  -->
+                                <div class="mb-3 text-center d-flex align-items-center">
+                                    <div class="me-2"><i class="fa-solid fa-envelope"></i></div>
+                                    <input type="email" name="email" placeholder="Enter Email" class="form-control">
+                                </div>
+                                <!--  -->
+                                <div class="mb-3 text-center text-center">
+                                    <textarea name="description" id="description" cols="50" rows="5" placeholder="description"></textarea>
+                                </div>
+                                <!--  -->
+                                <div class="mb-3 text-center text-center">
+                                    <input type="file" name="profile-image" id="profile-image" class="form-control">
+                                </div>
+
+
+                            </div>
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-outline-primary">Add Contact</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

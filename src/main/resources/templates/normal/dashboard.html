@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/userbase::layout('dashboard',~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+        <div style="display: flex; justify-content: center; align-items: center; height: 80vh; width: 100%;">
+            <div style="text-align: center;">
+                <div
+                    style="border: 1px solid #ccc; border-radius: 5px; padding: 20px; min-height: 150px; background-color: #f9f9f9;">
+                    <h2>Welcome, <span th:text="${user.name}"></span></h3>
+                    <p id="quote" style="margin-top: 20px; font-style: italic; font-weight: bold; font-size: 1.5;">Loading...</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Fetch a random quote from an API
+            fetch('https://api.quotable.io/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('quote').innerText = data.content;
+                });
+        </script>
+    </section>
+
+</body>
+
+</html>

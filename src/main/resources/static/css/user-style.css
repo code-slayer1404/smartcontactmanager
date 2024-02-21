@@ -1,0 +1,13 @@
+body {
+    background-image: none;
+    background-color: hsla(61, 63%, 82%, 0.546);
+    height: 100%;
+    width: 100%;
+}
+
+.profile-pic{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit:cover;
+}

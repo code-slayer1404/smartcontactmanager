@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout('home',~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- everything  in this  section will be placed inside the section of base.html -->
+    <section class="d-flex justify-content-center align-items-center vh-100">
+        <div class="text-center text-white mt-5">
+            <h2>Welcome</h2>
+            <button class="btn btn-primary"><a href="" th:href="@{/signup}" style="text-decoration: none; color: white;">Get Started</a></button>
+        </div>
+    </section>
+</body>
+</html>

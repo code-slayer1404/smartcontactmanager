@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: gray;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/pexels-pixabay-163007.jpg);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+/******************** for login page***************************** */
+#login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #9C9C9C;
+    background-color: white;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+    padding: 30px;
+}
+
+/* just for register here div */
+#login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -40px;
+}
+
+/******************* for dashboard ************************/
+.sidebar {
+    width: 15%;
+    background-color: white;
+
+    position: fixed;
+    top: 56px;
+    bottom: 0px;
+
+    padding: 40px 0px 0px 0px;
+    /* outline: auto; */
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: gray;
+    padding:  10px 0px 10px 20px;
+}
+
+.sidebar a:hover {
+    background-color: #e2e2e2;
+}
+
+.content {
+    position: absolute;
+    top: 56px;
+    left: 15%;
+    right: 0;
+    bottom: 0;
+
+    padding-left: 10px;
+    padding-top: auto;
+
+    /* outline: auto; */
+}
+
+#crossbtn {
+    position: fixed;
+    top: 64px;
+    left: 12.5%;
+    font-size: 24px;
+}
+#crossbtn:hover{
+    font-size: 32px;
+    background-color: #e2e2e2;
+
+}
+
+#openbar {
+    position: fixed;
+    top: 64px;
+    font-size: 24px;
+}
+#openbar:hover{
+    font-size: 32px;
+}
+
+/* for search  */
+
+#searchContainer{
+    position: relative;
+}
+
+#searchResult{
+    height: fit-content;
+    width: 100%;
+    border: 2px solid black;
+    background-color: white;
+    position: absolute;
+    z-index: 10000;
+    display: none;
+}
