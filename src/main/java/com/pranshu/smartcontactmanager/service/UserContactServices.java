@@ -74,7 +74,7 @@ public class UserContactServices {
     }
 
     public Message deleteContact(User user, int cid) {
-        Contact contact = contactRepo.findById(cid).get();
+        Contact contact = contactRepo.findById(cid).orElse(null);
 
         try {
             if (contact == null) {
