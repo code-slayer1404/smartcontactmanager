@@ -22,7 +22,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class UserControllerTest {
+public class ContactControllerTest {
 
     @Mock
     private UserRepo userRepo;
@@ -31,7 +31,7 @@ public class UserControllerTest {
     private UserContactServices userContactServices;
 
     @InjectMocks
-    private UserController userController;
+    private ContactController userController;
 
     @Mock
     Model model;
@@ -45,6 +45,7 @@ public class UserControllerTest {
         lenient().when(model.getAttribute("user")).thenReturn(new User()); // or any appropriate User object
     }
 
+    @SuppressWarnings("null")
     @Test
     public void testOpenAddContact() {
         

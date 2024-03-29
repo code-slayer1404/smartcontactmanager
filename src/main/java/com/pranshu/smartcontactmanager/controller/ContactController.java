@@ -26,7 +26,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class ContactController {
 
     @Autowired
     private UserRepo userRepo;
